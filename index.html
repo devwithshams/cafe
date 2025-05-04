@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CafeConnect - Your Computer Cafe Online</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom CSS for additional styling */
+        .gradient-text {
+            background: linear-gradient(90deg, #3b82f6, #10b981);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .nav-link::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: #3b82f6;
+            transition: width .3s;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+        }
+        
+        /* Animation for hero section */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 1s ease-out forwards;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-900 text-gray-100 font-sans min-h-screen flex flex-col">
+    <!-- Navigation -->
+    <nav class="bg-gray-800 border-b border-gray-700 fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <span class="text-xl font-bold gradient-text">CafeConnect</span>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#home" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white transition duration-300">Home</a>
+                        <a href="#services" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white transition duration-300">Services</a>
+                        <a href="#submit" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white transition duration-300">Submit Work</a>
+                        <a href="#track" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white transition duration-300">Track Orders</a>
+                        <a href="#admin" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white transition duration-300">Admin</a>
+                        <a href="#login" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white transition duration-300">Login</a>
+                        <a href="#signup" class="bg-blue-600 hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium text-white transition duration-300">Sign Up</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-300 hover:text-white focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+   <!-- Mobile menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-gray-800">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">Home</a>
+                <a href="#services" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">Services</a>
+                <a href="#submit" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">Submit Work</a>
+                <a href="#track" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">Track Orders</a>
+                <a href="#admin" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">Admin</a>
+                <a href="#login" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">Login</a>
+                <a href="#signup" class="block px-3 py-2 rounded-md text-base font-medium text-white bg-blue-600 hover:bg-blue-700">Sign Up</a>
+            </div>
+        </div>
+    </nav>
+
+
+<!-- Main Content -->
+    <main class="flex-grow pt-16">
+        <!-- Hero Section -->
+        <section id="home" class="bg-gradient-to-b from-gray-800 to-gray-900 py-20 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto text-center animate-fade-in">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6">Your Computer Cafe, <span class="gradient-text">Online</span></h1>
+                <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">Submit printing, typing, or design tasks with ease and track your orders in real-time.</p>
+                <div class="flex justify-center space-x-4">
+                    <a href="#submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105">
+                        Submit Work Now
+                    </a>
+                    <a href="#services" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105">
+                        Learn More
+                    </a>
+                </div>
+            </div>
+        </section>
+
+
+   <!-- Services Section -->
+        <section id="services" class="py-16 px-4 sm:px-6 lg:px-8 bg-gray-900">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-3xl font-bold text-center mb-12">Our Services</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Printing Service -->
+                    <div class="bg-gray-800 rounded-xl p-6 shadow-lg card-hover transition duration-300">
+                        <div class="text-blue-400 mb-4">
+                            <i class="fas fa-print text-4xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Printing</h3>
+                        <p class="text-gray-300 mb-4">High-quality printing services for documents, photos, and more. Various paper sizes and types available.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-700 text-blue-400 text-xs px-2 py-1 rounded">Black & White</span>
+                            <span class="bg-gray-700 text-blue-400 text-xs px-2 py-1 rounded">Color</span>
+                            <span class="bg-gray-700 text-blue-400 text-xs px-2 py-1 rounded">A4/A5</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Typing Service -->
+                    <div class="bg-gray-800 rounded-xl p-6 shadow-lg card-hover transition duration-300">
+                        <div class="text-green-400 mb-4">
+                            <i class="fas fa-keyboard text-4xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Typing</h3>
+                        <p class="text-gray-300 mb-4">Professional typing services for documents, forms, and manuscripts. Fast and accurate results.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-700 text-green-400 text-xs px-2 py-1 rounded">Documents</span>
+                            <span class="bg-gray-700 text-green-400 text-xs px-2 py-1 rounded">Forms</span>
+                            <span class="bg-gray-700 text-green-400 text-xs px-2 py-1 rounded">Manuscripts</span>
+                        </div>
+                    </div>
+     
+
+   <!-- Design Service -->
+                    <div class="bg-gray-800 rounded-xl p-6 shadow-lg card-hover transition duration-300">
+                        <div class="text-purple-400 mb-4">
+                            <i class="fas fa-paint-brush text-4xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Design</h3>
+                        <p class="text-gray-300 mb-4">Creative design services including flyers, business cards, and social media graphics.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-700 text-purple-400 text-xs px-2 py-1 rounded">Flyers</span>
+                            <span class="bg-gray-700 text-purple-400 text-xs px-2 py-1 rounded">Business Cards</span>
+                            <span class="bg-gray-700 text-purple-400 text-xs px-2 py-1 rounded">Social Media</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Submit Work Section -->
+        <section id="submit" class="py-16 px-4 sm:px-6 lg:px-8 bg-gray-800">
+            <div class="max-w-3xl mx-auto">
+                <h2 class="text-3xl font-bold text-center mb-8">Submit Your Work</h2>
+                <form class="bg-gray-900 rounded-xl p-6 shadow-lg">
+                    <div class="mb-6">
+                        <label for="task-type" class="block text-gray-300 mb-2">Task Type</label>
+                        <select id="task-type" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-blue-500">
+                            <option value="">Select a task type</option>
+                            <option value="printing">Printing</option>
+                            <option value="typing">Typing</option>
+                            <option value="design">Design</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label for="instructions" class="block text-gray-300 mb-2">Instructions</label>
+                        <textarea id="instructions" rows="4" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-blue-500" placeholder="Provide detailed instructions for your task..."></textarea>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label class="block text-gray-300 mb-2">Upload Files</label>
+                        <div class="flex items-center justify-center w-full">
+                            <label for="file-upload" class="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-700 border-dashed rounded-lg cursor-pointer bg-gray-800 hover:bg-gray-700 transition duration-300">
+                                <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                                    <i class="fas fa-cloud-upload-alt text-3xl text-gray-400 mb-3"></i>
+                                    <p class="mb-2 text-sm text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
+                                    <p class="text-xs text-gray-500">PDF, JPG, PNG (MAX. 10MB)</p>
+                                </div>
+                                <input id="file-upload" type="file" class="hidden" multiple />
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105">
+                        Submit Task
+                    </button>
+                </form>
+            </div>
+        </section>
+
+
+<!-- Track Orders Section -->
+        <section id="track" class="py-16 px-4 sm:px-6 lg:px-8 bg-gray-900">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-3xl font-bold text-center mb-8">Your Orders</h2>
+                
+                <div class="bg-gray-800 rounded-xl shadow-lg overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-gray-700">
+                            <thead class="bg-gray-700">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Task ID</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Type</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Date</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Status</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-gray-800 divide-y divide-gray-700">
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-white">#CC-2023-001</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">Printing</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">May 15, 2023</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-900 text-green-300">Completed</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
+                                        <a href="#" class="text-blue-400 hover:text-blue-300">View</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-white">#CC-2023-002</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">Typing</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">May 18, 2023</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-900 text-yellow-300">In Progress</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
+                                        <a href="#" class="text-blue-400 hover:text-blue-300">View</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-white">#CC-2023-003</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">Design</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">May 20, 2023</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-900 text-blue-300">Pending</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
+                                        <a href="#" class="text-blue-400 hover:text-blue-300">View</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="mt-8 text-center">
+                    <p class="text-gray-400">Don't see your order? <a href="#submit" class="text-blue-400 hover:underline">Submit a new task</a></p>
+                </div>
+            </div>
+        </section>
+
+
+   <!-- Admin Dashboard Section -->
+        <section id="admin" class="py-16 px-4 sm:px-6 lg:px-8 bg-gray-800">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-3xl font-bold text-center mb-8">Admin Dashboard</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                    <div class="bg-gray-900 rounded-lg p-6 shadow">
+                        <div class="flex items-center">
+                            <div class="p-3 rounded-full bg-blue-900/30 text-blue-400 mr-4">
+                                <i class="fas fa-tasks text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-400">Total Orders</p>
+                                <p class="text-2xl font-bold">124</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-900 rounded-lg p-6 shadow">
+                        <div class="flex items-center">
+                            <div class="p-3 rounded-full bg-green-900/30 text-green-400 mr-4">
+                                <i class="fas fa-check-circle text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-400">Completed</p>
+                                <p class="text-2xl font-bold">89</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-900 rounded-lg p-6 shadow">
+                        <div class="flex items-center">
+                            <div class="p-3 rounded-full bg-yellow-900/30 text-yellow-400 mr-4">
+                                <i class="fas fa-spinner text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-400">In Progress</p>
+                                <p class="text-2xl font-bold">22</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-900 rounded-lg p-6 shadow">
+                        <div class="flex items-center">
+                            <div class="p-3 rounded-full bg-red-900/30 text-red-400 mr-4">
+                                <i class="fas fa-exclamation-circle text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-400">Pending</p>
+                                <p class="text-2xl font-bold">13</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-900 rounded-xl shadow-lg overflow-hidden">
+                    <div class="px-6 py-4 border-b border-gray-800 flex justify-between items-center">
+                        <h3 class="text-lg font-medium">Recent Orders</h3>
+                        <div class="relative">
+                            <select class="appearance-none bg-gray-800 border border-gray-700 text-white text-sm rounded-lg px-4 py-2 pr-8 focus:border-blue-500">
+                                <option>All Orders</option>
+                                <option>Printing</option>
+                                <option>Typing</option>
+                                <option>Design</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-400">
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-gray-800">
+                            <thead class="bg-gray-800">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Order ID</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Customer</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Type</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Date</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Status</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-gray-900 divide-y divide-gray-800">
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-white">#CC-2023-045</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">John Doe</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">Printing</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">May 20, 2023</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-900 text-yellow-300">In Progress</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
+                                        <button class="text-blue-400 hover:text-blue-300 mr-3">Edit</button>
+                                        <button class="text-green-400 hover:text-green-300">Complete</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-white">#CC-2023-044</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">Jane Smith</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">Design</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">May 19, 2023</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-900 text-blue-300">Pending</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
+                                        <button class="text-blue-400 hover:text-blue-300 mr-3">Edit</button>
+                                        <button class="text-green-400 hover:text-green-300">Complete</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-white">#CC-2023-043</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">Mike Johnson</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">Typing</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">May 18, 2023</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-900 text-green-300">Completed</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
+                                        <button class="text-blue-400 hover:text-blue-300 mr-3">View</button>
+                                        <button class="text-red-400 hover:text-red-300">Delete</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+
+  <div class="px-6 py-4 border-t border-gray-800 flex items-center justify-between">
+                        <div class="text-sm text-gray-400">Showing <span class="font-medium">1</span> to <span class="font-medium">3</span> of <span class="font-medium">45</span> results</div>
+                        <div class="flex space-x-2">
+                            <button class="px-3 py-1 rounded-md bg-gray-800 text-gray-300 hover:bg-gray-700">Previous</button>
+                            <button class="px-3 py-1 rounded-md bg-blue-600 text-white">1</button>
+                            <button class="px-3 py-1 rounded-md bg-gray-800 text-gray-300 hover:bg-gray-700">2</button>
+                            <button class="px-3 py-1 rounded-md bg-gray-800 text-gray-300 hover:bg-gray-700">3</button>
+                            <button class="px-3 py-1 rounded-md bg-gray-800 text-gray-300 hover:bg-gray-700">Next</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Login Section -->
+        <section id="login" class="py-16 px-4 sm:px-6 lg:px-8 bg-gray-900">
+            <div class="max-w-md mx-auto">
+                <div class="bg-gray-800 rounded-xl shadow-lg p-8">
+                    <h2 class="text-2xl font-bold text-center mb-8">Login to Your Account</h2>
+                    <form>
+                        <div class="mb-6">
+                            <label for="login-email" class="block text-gray-300 mb-2">Email</label>
+                            <input type="email" id="login-email" class="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white focus:border-blue-500" placeholder="your@email.com">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="login-password" class="block text-gray-300 mb-2">Password</label>
+                            <input type="password" id="login-password" class="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white focus:border-blue-500" placeholder="••••••••">
+                        </div>
+                        
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="flex items-center">
+                                <input id="remember-me" type="checkbox" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-600 rounded">
+                                <label for="remember-me" class="ml-2 block text-sm text-gray-300">Remember me</label>
+                            </div>
+                            <a href="#" class="text-sm text-blue-400 hover:underline">Forgot password?</a>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 mb-4">
+                            Login
+                        </button>
+                        
+                        <p class="text-center text-gray-400">Don't have an account? <a href="#signup" class="text-blue-400 hover:underline">Sign up</a></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+
+
+  <!-- Sign Up Section -->
+        <section id="signup" class="py-16 px-4 sm:px-6 lg:px-8 bg-gray-800">
+            <div class="max-w-md mx-auto">
+                <div class="bg-gray-900 rounded-xl shadow-lg p-8">
+                    <h2 class="text-2xl font-bold text-center mb-8">Create an Account</h2>
+                    <form>
+                        <div class="mb-6">
+                            <label for="signup-name" class="block text-gray-300 mb-2">Full Name</label>
+                            <input type="text" id="signup-name" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-blue-500" placeholder="John Doe">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="signup-email" class="block text-gray-300 mb-2">Email</label>
+                            <input type="email" id="signup-email" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-blue-500" placeholder="your@email.com">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="signup-password" class="block text-gray-300 mb-2">Password</label>
+                            <input type="password" id="signup-password" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-blue-500" placeholder="••••••••">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="signup-confirm" class="block text-gray-300 mb-2">Confirm Password</label>
+                            <input type="password" id="signup-confirm" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-blue-500" placeholder="••••••••">
+                        </div>
+                        
+                        <div class="flex items-center mb-6">
+                            <input id="terms" type="checkbox" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-700 rounded">
+                            <label for="terms" class="ml-2 block text-sm text-gray-300">I agree to the <a href="#" class="text-blue-400 hover:underline">Terms of Service</a> and <a href="#" class="text-blue-400 hover:underline">Privacy Policy</a></label>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 mb-4">
+                            Create Account
+                        </button>
+                        
+                        <p class="text-center text-gray-400">Already have an account? <a href="#login" class="text-blue-400 hover:underline">Login</a></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 border-t border-gray-700 py-8 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">CafeConnect</h3>
+                    <p class="text-gray-400">Your computer cafe services online. Fast, reliable, and convenient.</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Services</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Printing</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Typing</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Design</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Scanning</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Company</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Contact</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Careers</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Connect</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                    <div class="mt-4">
+                        <p class="text-gray-400">support@cafeconnect.com</p>
+                        <p class="text-gray-400">+1 (234) 567-8900</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">© 2023 CafeConnect. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">Terms of Service</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+<script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                    
+                    // Scroll to target
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // File upload display
+        const fileUpload = document.getElementById('file-upload');
+        if (fileUpload) {
+            fileUpload.addEventListener('change', function() {
+                const files = this.files;
+                if (files.length > 0) {
+                    const uploadArea = this.parentElement;
+                    uploadArea.innerHTML = `
+                        <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                            <i class="fas fa-check-circle text-3xl text-green-400 mb-3"></i>
+                            <p class="mb-2 text-sm text-gray-400">${files.length} file(s) selected</p>
+                            <p class="text-xs text-gray-500">Click to change files</p>
+                        </div>
+                    `;
+                }
+            });
+        }
+    </script>
+</body>
+</html>
